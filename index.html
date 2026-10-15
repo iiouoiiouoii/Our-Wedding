@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>김남영 ♥ 박소영 결혼합니다</title>
+<meta property="og:title" content="김남영 ♥ 박소영 결혼합니다">
+<meta property="og:description" content="2027년 1월 30일 토요일 낮 12시 30분">
+<meta property="og:image" content="images/hero.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#7ec8f0;--sky2:#3d9fd6;--pale:#eaf6fd;--lime:#c8e66a;--ink:#33414d;--serif:'Gowun Batang',serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);line-height:1.7;background:radial-gradient(#cfe9f8 1.5px,transparent 1.5px) 0 0/18px 18px,#f1f9fd;-webkit-tap-highlight-color:transparent}
+main{max-width:480px;margin:0 auto;min-height:100vh;background:radial-gradient(#e6f4fc 1.2px,transparent 1.2px) 0 0/16px 16px,#fff;box-shadow:0 0 40px #4aa8dc33;overflow:hidden;position:relative}
+.sec{padding:56px 24px;text-align:center}
+h2{font-family:var(--serif);font-size:22px;color:var(--sky2);margin-bottom:22px;font-weight:700}
+.serif{font-family:var(--serif)}
+.fade{opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s}.fade.in{opacity:1;transform:none}
+.div{text-align:center;color:var(--sky);font-size:14px;letter-spacing:.6em;padding:4px 0}
+.btn{border:0;border-radius:999px;padding:13px 28px;background:var(--sky);color:#fff;font:500 15px inherit;font-family:inherit;cursor:pointer;transition:.2s;text-decoration:none;display:inline-block}
+.btn:hover,.btn:active{background:var(--sky2)}.btn.lime{background:var(--lime);color:#3b4a12}.btn.lime:hover,.btn.lime:active{background:#b6d650}
+.snow{position:fixed;inset:0;pointer-events:none;z-index:5}
+.snow i{position:absolute;top:-10px;border-radius:50%;background:#9ad6f5;opacity:.55;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(30px,105vh)}}
+/* hero */
+.hero{height:100svh;min-height:560px;position:relative;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(#cfeafa,#7ec8f0)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(#0000,#0a3a5a66)}
+.hero div{position:relative;z-index:1;text-align:center}
+.hero h1{font-family:var(--serif);font-size:34px;font-weight:700;letter-spacing:.08em;text-shadow:0 2px 12px #0004}
+.hero p{margin-top:10px;letter-spacing:.15em;font-size:14px}
+.scroll{position:absolute;bottom:28px;z-index:1;width:22px;height:36px;border:2px solid #fff;border-radius:12px;animation:bounce 1.6s infinite}
+.scroll:after{content:'';position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;background:#fff;border-radius:2px}
+@keyframes bounce{50%{transform:translateY(10px)}}
+/* invite */
+.invite p{font-family:var(--serif);font-size:16px;line-height:2.1;margin-bottom:24px}
+.invite .who{font-size:15px}.invite .who b{font-size:18px;margin-left:6px}
+/* modal */
+.ov{position:fixed;inset:0;background:#0a2a3c66;display:none;z-index:50;justify-content:center;align-items:flex-end}.ov.on{display:flex}
+.sheet{position:relative;width:100%;max-width:480px;background:#fff;border-radius:22px 22px 0 0;padding:34px 22px 30px;max-height:92vh;overflow:auto;animation:up .35s ease;text-align:left}
+@keyframes up{from{transform:translateY(100%)}}
+.x{position:absolute;right:14px;top:10px;border:0;background:none;font-size:26px;color:var(--sky2);cursor:pointer}
+.dots{position:absolute;top:16px;left:22px;display:flex;gap:6px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--lime)}.dots i:nth-child(2){opacity:.6}.dots i:nth-child(3){opacity:.3}
+.sheet h3{font-family:var(--serif);text-align:center;color:var(--sky2);margin-bottom:18px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cols h4{text-align:center;font-size:14px;color:var(--sky2);padding-bottom:6px;border-bottom:2px solid var(--pale);margin-bottom:8px}
+.p{padding:8px 0;border-bottom:1px dashed #dbeaf3;display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px}
+.p small{width:100%;color:#7b8a96;font-size:12px}.p b{flex:1;font-weight:500}
+.p a{text-decoration:none;width:32px;height:32px;line-height:32px;text-align:center;border-radius:50%;background:var(--pale);transition:.2s}.p a:hover,.p a:active{background:var(--sky)}
+/* gallery */
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 24px 10px;scrollbar-width:none}.gal::-webkit-scrollbar{display:none}
+.g{flex:0 0 78%;aspect-ratio:3/4;border-radius:14px;overflow:hidden;scroll-snap-align:center;background:linear-gradient(160deg,#dff1fb,#a9d9f3);box-shadow:0 6px 18px #4aa8dc33}
+.g img{width:100%;height:100%;object-fit:cover}
+/* date */
+.cd{font-family:var(--serif);margin-bottom:6px}
+.cal{background:#fff;border:1px solid #d9ecf7;border-radius:16px;padding:18px 14px;margin:18px 0}
+.cal .w,.cal .d{display:grid;grid-template-columns:repeat(7,1fr);gap:4px 0;font-size:14px}
+.cal .w{color:#8fa0ac;font-size:12px;margin-bottom:6px}.cal .d span{height:34px;line-height:34px}
+.cal .hl{background:var(--sky);color:#fff;border-radius:50%;font-weight:500;width:34px;margin:auto;box-shadow:0 0 0 4px var(--pale)}
+.cal .su,.cal .w :first-child{color:#e58a8a}
+.t{display:flex;justify-content:center;gap:10px;margin:14px 0}.t div{width:62px;padding:10px 0;background:var(--pale);border-radius:12px}.t b{display:block;font-size:22px;color:var(--sky2)}.t small{font-size:11px;color:#7b8a96}
+/* map */
+#map{height:240px;border-radius:14px;overflow:hidden;background:var(--pale);margin-bottom:14px}#map iframe{width:100%;height:100%;border:0}
+.row{display:flex;gap:8px;justify-content:center;margin:12px 0}.row .btn{padding:10px 16px;font-size:14px}
+.info{text-align:left;background:#fff;border:1px solid #d9ecf7;border-radius:14px;padding:16px;font-size:14px;margin-top:14px}.info b{color:var(--sky2)}
+/* venue */
+.card{background:#fff;border-radius:18px;box-shadow:0 8px 28px #4aa8dc26;padding:14px;margin-bottom:16px;text-align:left}
+.card .ph{aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#dff1fb,#a9d9f3)}.card img{width:100%;height:100%;object-fit:cover}
+.card h4{margin:12px 0 2px;font-family:var(--serif);color:var(--sky2)}.card p{font-size:14px;color:#55656f}
+/* account */
+details{border:1px solid #d9ecf7;border-radius:14px;margin-bottom:10px;background:#fff;text-align:left}
+summary{padding:14px 18px;cursor:pointer;font-weight:500;color:var(--sky2);list-style:none}summary::after{content:'+';float:right}details[open] summary::after{content:'–'}
+.ac{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;border-top:1px dashed #dbeaf3;font-size:14px;gap:8px}.ac small{color:#7b8a96;display:block}
+.ac button{border:1px solid var(--sky);background:#fff;color:var(--sky2);border-radius:999px;padding:5px 12px;cursor:pointer;font:inherit;font-size:12px;transition:.2s}.ac button:hover,.ac button:active{background:var(--sky);color:#fff}
+/* forms */
+label.f{display:block;font-size:14px;font-weight:500;margin:16px 0 6px}
+input[type=text],input[type=number],textarea{width:100%;padding:12px 14px;border:1.5px solid #d5e5ef;border-radius:12px;font:inherit;font-size:15px;outline:0;transition:.2s;background:#fff}
+input:focus,textarea:focus{border-color:var(--sky)}.ok{border-color:var(--sky2)!important;background:#f6fcff}
+.chips{display:flex;gap:8px}.chips label{flex:1}.chips input{display:none}
+.chips span{display:block;text-align:center;padding:11px 0;border:1.5px solid #d5e5ef;border-radius:12px;font-size:14px;cursor:pointer;transition:.2s}
+.chips input:checked+span{background:var(--sky);border-color:var(--sky);color:#fff}
+.chk{display:flex;gap:6px;align-items:center;font-size:13px;color:#7b8a96;margin-top:14px;justify-content:center}.chk input{accent-color:var(--sky2)}
+/* guestbook */
+.gb{columns:2;column-gap:12px;margin-top:22px;text-align:left}
+.n{break-inside:avoid;margin-bottom:12px;padding:14px;border-radius:4px 4px 14px 4px;font-size:14px;box-shadow:2px 4px 10px #0001;word-break:break-word;white-space:pre-wrap;animation:pop .5s}
+.n b{display:block;margin-top:8px;font-size:12px;font-weight:500;opacity:.7;text-align:right}
+@keyframes pop{from{opacity:0;transform:scale(.9)}}
+.gf{display:grid;gap:8px}
+footer{padding:44px 24px 60px;text-align:center;background:var(--pale)}footer .row{margin-top:0}footer p{font-size:12px;color:#7b8a96;margin-top:16px}
+#toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:#33414dee;color:#fff;padding:11px 20px;border-radius:999px;font-size:14px;z-index:99;opacity:0;pointer-events:none;transition:.3s}#toast.on{opacity:1}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fade{opacity:1;transform:none}}
+</style></head>
+<body><div class="snow" id="snow"></div>
+<main>
+<section class="hero"><img src="images/hero.jpg" alt="" onerror="this.remove()"><div><h1>김남영 ♥ 박소영</h1><p>2027. 01. 30 SAT 12:30</p></div><span class="scroll"></span></section>
+<div class="div">✦</div>
+
+<section class="sec invite fade"><h2>INVITATION</h2>
+<p class="who">김진태 · 오석순의 장남<b>김남영</b></p><p class="who">박상기 · 김정희의 장녀<b>박소영</b></p><br>
+<p>오랜 시간 걸음 지키며<br>서로의 하루가 되어주었습니다.</p>
+<p>이제 부부라는 이름으로<br>같은 방향을 걸어가려 합니다.</p>
+<p>이 뜻깊은 시작의 자리에<br>소중한 분들을 정중히 초대합니다.</p>
+<p class="who">김남영 · 박소영 드림</p></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>CONTACT</h2><button class="btn" onclick="open_('m-contact')">연락하기</button></section>
+<div class="div">✦</div>
+
+<section class="sec fade" style="padding-left:0;padding-right:0"><h2>GALLERY</h2><div class="gal" id="gal"></div></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>WEDDING DAY</h2>
+<p class="serif">2027년 1월 30일 토요일 낮 12시 30분</p>
+<div class="cal" id="cal"></div>
+<div class="t" id="t"></div>
+<p class="cd" id="cd"></p></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>LOCATION</h2>
+<div id="map"></div>
+<p><b id="addr"></b></p>
+<div class="row"><a class="btn" id="kk" target="_blank" rel="noopener">길찾기</a><a class="btn" id="nv" target="_blank" rel="noopener" style="background:#4cc47c">네이버 지도</a></div>
+<div class="info"><p><b>주차</b> 예식장 지하주차장 무료 이용 (2시간)</p><p><b>지하철</b> 2호선 센텀시티역 3번 출구, 도보 5분</p><p><b>버스</b> 센텀시티역 정류장 하차</p></div></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>VENUE</h2><div id="venue"></div></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>마음 전하실 곳</h2><div id="acc"></div></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>참석 여부</h2><p style="margin-bottom:18px;font-size:14px">참석 여부를 미리 알려주시면 큰 도움이 됩니다.</p>
+<button class="btn lime" onclick="open_('m-rsvp')">참석 의사 전달하기</button></section>
+<div class="div">✦</div>
+
+<section class="sec fade"><h2>축하 메시지</h2>
+<form class="gf" id="gf"><input type="text" id="ga" placeholder="이름" maxlength="20"><textarea id="gc" rows="3" placeholder="신랑 신부에게 축하의 마음을 남겨주세요" maxlength="300"></textarea><button class="btn">메시지 남기기</button></form>
+<div class="gb" id="gb"></div></section>
+
+<footer><div class="row"><button class="btn lime" id="ks" style="color:#3b4a12">카카오톡 공유</button><button class="btn" id="cl">링크 복사</button></div><p>김남영 ♥ 박소영 · 소중한 걸음에 함께해 주셔서 감사합니다</p></footer>
+</main>
+
+<div class="ov" id="m-contact"><div class="sheet"><span class="dots"><i></i><i></i><i></i></span><button class="x" onclick="close_()">×</button><h3>연락하기</h3><div class="cols" id="ct"></div></div></div>
+
+<div class="ov" id="m-rsvp"><div class="sheet"><button class="x" onclick="close_()">×</button><h3>참석 의사 전달</h3>
+<form id="rf" novalidate>
+<label class="f">구분</label><div class="chips"><label><input type="radio" name="side" value="신랑측"><span>신랑측</span></label><label><input type="radio" name="side" value="신부측"><span>신부측</span></label></div>
+<label class="f">성함</label><input type="text" name="name" placeholder="성함을 입력해 주세요" maxlength="20">
+<label class="f">참석 여부</label><div class="chips"><label><input type="radio" name="att" value="참석" checked><span>참석</span></label><label><input type="radio" name="att" value="불참석"><span>불참석</span></label></div>
+<label class="f">참석인원</label><input type="number" name="cnt" min="1" max="20" placeholder="본인 포함 총 참석인원">
+<label class="f">동행인</label><input type="text" name="mates" placeholder="함께 오시는 분 성함" maxlength="60">
+<label class="f">식사여부</label><div class="chips"><label><input type="radio" name="meal" value="예정" checked><span>예정</span></label><label><input type="radio" name="meal" value="안함"><span>안함</span></label><label><input type="radio" name="meal" value="미정"><span>미정</span></label></div>
+<button class="btn lime" style="width:100%;margin-top:22px">참석 의사 전달하기</button>
+<label class="chk"><input type="checkbox" id="hide"> 오늘 하루 보지 않기</label></form></div></div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ===== 여기만 수정하세요 ===== */
+const C={
+ date:'2027-01-30T12:30:00+09:00',
+ addr:'부산 해운대구 센텀 중앙로 79',
+ supabaseUrl:'', supabaseKey:'',   // Supabase 프로젝트 URL / anon key (비우면 이 브라우저에만 저장)
+ kakaoKey:'',                      // Kakao JavaScript 키 (지도·공유용, 비우면 구글지도/링크공유로 대체)
+ gallery:['images/gallery1.jpg','images/gallery2.jpg','images/gallery3.jpg'],
+ venue:[['images/info1.jpg','안내 1','안내1 내용'],['images/info2.jpg','안내 2','안내2 내용'],['images/info3.jpg','안내 3','안내3 내용']],
+ contacts:{'신랑측':[['신랑','김남영','010-0000-0000'],['신랑 아버지','김진태','010-0000-0000'],['신랑 어머니','오석순','010-0000-0000']],
+           '신부측':[['신부','박소영','010-0000-0000'],['신부 아버지','박상기','010-0000-0000'],['신부 어머니','김정희','010-0000-0000']]},
+ accounts:{'신랑측':[['신랑 김남영','국민은행','000000-00-000000'],['아버지 김진태','신한은행','000-000-000000']],
+           '신부측':[['신부 박소영','우리은행','0000-000-000000'],['아버지 박상기','농협','000-0000-0000-00']]}
+};
+/* =========================== */
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)};
+const copy=async s=>{try{await navigator.clipboard.writeText(s)}catch{const a=document.createElement('textarea');a.value=s;document.body.append(a);a.select();document.execCommand('copy');a.remove()}toast('복사되었습니다')};
+const open_=id=>{$('#'+id).classList.add('on');document.body.style.overflow='hidden'};
+const close_=()=>{document.querySelectorAll('.ov').forEach(o=>o.classList.remove('on'));document.body.style.overflow=''};
+document.querySelectorAll('.ov').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)close_()}));
+const load=src=>new Promise((r,j)=>{const s=document.createElement('script');s.src=src;s.onload=r;s.onerror=j;document.head.append(s)});
+const img=(s)=>`<img src="${s}" alt="" loading="lazy" onerror="this.remove()">`;
+
+// fade-in & snow
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('.fade').forEach(e=>io.observe(e));
+$('#snow').innerHTML=Array.from({length:22},()=>`<i style="left:${Math.random()*100}%;width:${3+Math.random()*4}px;height:${3+Math.random()*4}px;animation-duration:${9+Math.random()*10}s;animation-delay:-${Math.random()*15}s"></i>`).join('');
+
+// contacts / gallery / venue / accounts
+$('#ct').innerHTML=Object.entries(C.contacts).map(([k,v])=>`<div><h4>${k}</h4>${v.map(([r,n,t])=>`<div class="p"><small>${r}</small><b>${n}</b>${t?`<a href="tel:${t}" aria-label="전화">📞</a><a href="sms:${t}" aria-label="문자">💬</a>`:''}</div>`).join('')}</div>`).join('');
+$('#gal').innerHTML=C.gallery.map(s=>`<div class="g">${img(s)}</div>`).join('');
+$('#venue').innerHTML=C.venue.map(([s,t,d])=>`<div class="card"><div class="ph">${img(s)}</div><h4>${t}</h4><p>${d}</p></div>`).join('');
+$('#acc').innerHTML=Object.entries(C.accounts).map(([k,v])=>`<details><summary>${k} 계좌번호</summary>${v.map(([w,b,n])=>`<div class="ac"><div><small>${w}</small>${b} ${n}</div><button data-c="${b} ${n}">복사</button></div>`).join('')}</details>`).join('');
+$('#acc').addEventListener('click',e=>e.target.dataset.c&&copy(e.target.dataset.c));
+
+// calendar & countdown
+{const [y,m,d]=C.date.slice(0,10).split('-').map(Number),f=new Date(y,m-1,1).getDay(),n=new Date(y,m,0).getDate();
+ let h='<div class="w">'+'일월화수목금토'.split('').map(x=>`<span>${x}</span>`).join('')+'</div><div class="d">'+'<span></span>'.repeat(f);
+ for(let i=1;i<=n;i++)h+=`<span class="${i===d?'hl':(f+i-1)%7===0?'su':''}">${i}</span>`;
+ $('#cal').innerHTML=`<p class="serif" style="margin-bottom:12px">${y}.${String(m).padStart(2,'0')}</p>`+h+'</div>'}
+const tick=()=>{const ms=new Date(C.date)-Date.now();
+ if(ms<=0){$('#t').innerHTML='';$('#cd').textContent='김남영 ❤️ 박소영, 결혼을 축하해 주셔서 감사합니다';return}
+ const d=Math.floor(ms/864e5),h=Math.floor(ms/36e5)%24,m=Math.floor(ms/6e4)%60,s=Math.floor(ms/1e3)%60;
+ $('#t').innerHTML=[[d,'DAYS'],[h,'HOURS'],[m,'MIN'],[s,'SEC']].map(([v,l])=>`<div><b>${v}</b><small>${l}</small></div>`).join('');
+ $('#cd').innerHTML=`김남영 ❤️ 박소영의 결혼식이 <b style="color:var(--sky2)">${d}일</b> 남았습니다`};
+tick();setInterval(tick,1000);
+
+// map
+$('#addr').textContent=C.addr;
+const q=encodeURIComponent(C.addr);$('#kk').href='https://map.kakao.com/link/search/'+q;$('#nv').href='https://map.naver.com/p/search/'+q;
+if(C.kakaoKey)load(`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${C.kakaoKey}&libraries=services&autoload=false`).then(()=>kakao.maps.load(()=>{
+ new kakao.maps.services.Geocoder().addressSearch(C.addr,(r,s)=>{if(s!=='OK')return;const p=new kakao.maps.LatLng(r[0].y,r[0].x),m=new kakao.maps.Map($('#map'),{center:p,level:3});new kakao.maps.Marker({map:m,position:p})})})).catch(()=>0);
+else $('#map').innerHTML=`<iframe loading="lazy" src="https://maps.google.com/maps?q=${q}&output=embed" title="지도"></iframe>`;
+
+// backend (Supabase or localStorage fallback)
+const sb=(C.supabaseUrl&&window.supabase)?supabase.createClient(C.supabaseUrl,C.supabaseKey):null;
+const LS=(k,v)=>{try{return v===undefined?JSON.parse(localStorage.getItem(k)||'[]'):localStorage.setItem(k,JSON.stringify(v))}catch{return[]}};
+const COL=['#fff3b0','#ffd6e0','#d4f0ff','#d9f5c5','#e6dcff','#ffe0c2'];
+const seen=new Set();
+function note(m,top){if(seen.has(m.id))return;seen.add(m.id);const el=document.createElement('div');el.className='n';
+ el.style.background=COL[m.color_index%6];el.style.transform=`rotate(${((String(m.id).split('').reduce((a,c)=>a+c.charCodeAt(0),0))%7-3)*.7}deg)`;
+ el.innerHTML=`${esc(m.content)}<b>— ${esc(m.author)}</b>`;top?$('#gb').prepend(el):$('#gb').append(el)}
+(async()=>{let rows=[];
+ if(sb){const {data}=await sb.from('guestbook_messages').select('*').order('created_at',{ascending:false}).limit(100);rows=data||[];
+  sb.channel('gb').on('postgres_changes',{event:'INSERT',schema:'public',table:'guestbook_messages'},p=>note(p.new,true)).subscribe()}
+ else rows=LS('gb');rows.forEach(r=>note(r))})();
+$('#gf').addEventListener('submit',async e=>{e.preventDefault();const author=$('#ga').value.trim(),content=$('#gc').value.trim();
+ if(!author||!content)return toast('이름과 메시지를 입력해 주세요');
+ const row={author,content,color_index:Math.floor(Math.random()*6)};
+ if(sb){const {error}=await sb.from('guestbook_messages').insert(row);if(error)return toast('전송에 실패했어요. 잠시 후 다시 시도해 주세요')}
+ else{row.id='l'+Date.now();LS('gb',[row,...LS('gb')]);note(row,true)}
+ $('#gf').reset();toast('메시지가 등록되었습니다')});
+
+// RSVP
+const today=new Date().toDateString(),F=$('#rf');
+F.addEventListener('input',e=>{const t=e.target;if(t.type==='text'||t.type==='number')t.classList.toggle('ok',!!t.value.trim())});
+$('#hide').addEventListener('change',e=>{try{e.target.checked?localStorage.setItem('rsvpHide',today):localStorage.removeItem('rsvpHide')}catch{}});
+setTimeout(()=>{try{if(localStorage.getItem('rsvpHide')!==today&&!localStorage.getItem('rsvpDone'))open_('m-rsvp')}catch{open_('m-rsvp')}},2000);
+F.addEventListener('submit',async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(F));
+ if(!d.side)return toast('신랑측/신부측을 선택해 주세요');
+ if(!d.name.trim())return toast('성함을 입력해 주세요');
+ if(d.att==='참석'&&!(+d.cnt>=1))return toast('참석인원을 입력해 주세요');
+ const row={name:d.name.trim(),phone:null,attendance:d.att,guest_count:+d.cnt||0,meal_preference:d.meal,message:`[${d.side}] 동행: ${d.mates||'-'}`};
+ if(sb){const {error}=await sb.from('rsvp_submissions').insert(row);if(error)return toast('전송에 실패했어요. 잠시 후 다시 시도해 주세요')}
+ else LS('rsvp',[...LS('rsvp'),row]);
+ try{localStorage.setItem('rsvpDone','1')}catch{}
+ close_();toast('참석 의사가 전달되었습니다. 감사합니다 ♥')});
+
+// footer
+$('#cl').onclick=()=>copy(location.href);
+$('#ks').onclick=async()=>{
+ if(C.kakaoKey){try{if(!window.Kakao)await load('https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js');if(!Kakao.isInitialized())Kakao.init(C.kakaoKey);
+  return Kakao.Share.sendDefault({objectType:'feed',content:{title:'김남영 ♥ 박소영 결혼합니다',description:'2027.01.30 토 낮 12:30',imageUrl:new URL('images/hero.jpg',location.href).href,link:{mobileWebUrl:location.href,webUrl:location.href}},buttons:[{title:'청첩장 보기',link:{mobileWebUrl:location.href,webUrl:location.href}}]})}catch{}}
+ if(navigator.share)navigator.share({title:document.title,url:location.href}).catch(()=>0);else copy(location.href)};
+</script></body></html>
