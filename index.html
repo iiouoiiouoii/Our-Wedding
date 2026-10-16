@@ -129,11 +129,29 @@ body.opened .cv .k{transition-delay:.45s}body.opened .cv h1{transition-delay:.65
 .t b{display:block;font:400 30px var(--ser);color:var(--cocoa)}.t small{font:400 15px var(--pen);letter-spacing:.04em;color:var(--gold)}
 #cd{font-size:14px}
 /* location */
-#map{height:250px;background:#e7ddcd;box-shadow:0 0 0 7px var(--ivory),0 0 0 8px #eadfca,0 14px 28px #3a2b2426;margin:0 8px}#map iframe{width:100%;height:100%;border:0;filter:sepia(.3)}
-.vn{margin:-8px 0 24px;font:400 14px var(--ser);color:var(--mute)}.vn b{display:block;font:600 18px var(--ser);color:var(--ink);margin-bottom:2px}
-.cp{display:inline-block;margin-top:32px;border:0;background:none;font:400 15px var(--ser);color:var(--ink);cursor:pointer;border-bottom:1px solid var(--gold);padding-bottom:2px}
-.ways{margin-top:32px;text-align:left;border-top:1px solid var(--line)}.ways div{display:flex;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);font-size:14px}
-.ways strong{flex:0 0 58px;font:400 14px var(--ser);color:var(--cocoa)}.ways span{flex:1}
+.vn{margin:-8px 0 26px;font:400 14px var(--ser);color:var(--mute)}.vn b{display:block;font:600 19px var(--ser);color:var(--ink);margin-bottom:4px;letter-spacing:.01em}
+.mapc{border-radius:14px;overflow:hidden;background:var(--ivory);box-shadow:0 18px 36px -18px #3a2b2466,0 0 0 1px #3a2b2414}
+#map{height:260px;background:#ece6dc}#map img{filter:saturate(.82) brightness(1.02)}
+.mapb{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #3a2b2414}
+.mapb a{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 0;font:400 14px var(--ser);color:var(--ink);text-decoration:none;transition:background .2s}
+.mapb a+a{border-left:1px solid #3a2b2414}.mapb a:active,.mapb a:hover{background:#3a2b240a}
+.ic{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;font:700 11px Arial,sans-serif;font-style:normal;color:#fff}.ic.nv{background:#03c75a}.ic.kk{background:#fee500;color:#3a1d1d}
+.mk{position:relative;display:flex;flex-direction:column;align-items:center;pointer-events:none}
+.mk-tag{padding:6px 12px 7px;border-radius:4px;background:var(--ivory);color:var(--cocoa);font:600 12px var(--ser);white-space:nowrap;letter-spacing:.02em;box-shadow:0 6px 16px #2b201b33,0 0 0 1px #3a2b241a;animation:mkIn .5s ease .55s both}
+.mk-pin{margin-top:5px;width:30px;height:40px;filter:drop-shadow(0 4px 4px #2b201b55);transform-origin:50% 100%;animation:mkDrop .7s cubic-bezier(.3,1.5,.5,1) .15s both}
+.mk-pin svg{display:block;width:100%;height:100%}
+.mk-sh{width:16px;height:5px;margin-top:-3px;border-radius:50%;background:#2b201b40;animation:mkSh .7s ease .15s both}
+@keyframes mkIn{from{opacity:0;transform:translateY(4px)}}
+@keyframes mkDrop{0%{opacity:0;transform:translateY(-28px)}60%{opacity:1}80%{transform:translateY(0) scale(1.06,.94)}100%{transform:none}}
+@keyframes mkSh{from{opacity:0;transform:scale(.3)}}
+.mapfb{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-decoration:none;color:var(--ink)}
+.mapfb b{font:600 16px var(--ser)}.mapfb span{font-size:13px;color:var(--mute);margin-top:2px}.mapfb em{margin-top:14px;font-style:normal;font-size:13px;border-bottom:1px solid var(--gold)}
+.ways{margin:34px 0 0;text-align:left}
+.ways>div{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:16px 2px;border-top:1px solid var(--line)}.ways>div:last-child{border-bottom:1px solid var(--line)}
+.ways dt{font:600 13px var(--ser);color:var(--wax);letter-spacing:.06em;padding-top:2px}
+.ways dd{margin:0;font-size:14px;line-height:1.75;color:var(--ink)}.ways dd small{display:block;font-size:12.5px;color:var(--mute)}
+.ways dd p{margin:0}.ways dd p b{display:inline-block;min-width:78px;font-weight:600;color:var(--cocoa)}
+.cp{border:0;background:none;padding:0;font:inherit;color:var(--ink);cursor:pointer;text-align:left}.cp:after{content:'복사';margin-left:8px;font-size:11px;color:var(--gold);border:1px solid #b8946688;border-radius:999px;padding:1px 8px;vertical-align:1px}
 /* account */
 details{background:var(--ivory);margin-bottom:10px;text-align:left;box-shadow:0 0 0 1px #eadfca}
 summary{padding:16px 18px;cursor:pointer;font:400 15px var(--ser);list-style:none}summary::-webkit-details-marker{display:none}summary::after{content:'+';float:right;color:var(--gold)}details[open] summary::after{content:'–'}
@@ -218,9 +236,14 @@ label.f{display:block;font:400 14px var(--ser);margin:16px 0 6px}
 
 <section class="sec fade"><header class="sh"><span class="s">Location</span><h2>오시는 길</h2></header>
 <p class="vn"><b>센텀사이언스파크웨딩홀</b>23층 더스카이홀</p>
-<div id="map"></div><button class="cp" id="addr" onclick="copy(C.addr)"></button>
-<div class="row"><a class="btn" id="nv" target="_blank" rel="noopener">네이버 지도 길찾기</a><a class="btn o" id="kk" target="_blank" rel="noopener">카카오맵</a></div>
-<div class="ways"><div><strong>지하철</strong><span>2호선 센텀시티역 3번 출구 (도보 5분)</span></div><div><strong>버스</strong><span>센텀시티역 정류장 하차</span></div><div><strong>주차</strong><span>예식장 지하주차장 무료 이용 (2시간)</span></div></div></section>
+<div class="mapc"><div id="map"></div><div class="mapb"><a id="nv" target="_blank" rel="noopener"><i class="ic nv">N</i>네이버 지도</a><a id="kk" target="_blank" rel="noopener"><i class="ic kk">K</i>카카오맵</a></div></div>
+<dl class="ways">
+<div><dt>주소</dt><dd><button class="cp" id="addr" onclick="copy(C.addr)"></button></dd></div>
+<div><dt>지하철</dt><dd>2호선 센텀시티역 6번 출구<small>약 800m, 도보 13분</small></dd></div>
+<div><dt>버스</dt><dd><p><b>SK텔레콤</b> 115, 181, 307</p><p><b>센텀중학교</b> 1002</p><p><b>센텀센시빌</b> 31, 115-1, 155</p></dd></div>
+<div><dt>셔틀</dt><dd>센텀시티역 4번 출구 앞<small>15분 간격 운행</small></dd></div>
+<div><dt>주차</dt><dd>건물 내 주차장 3시간 무료</dd></div>
+</dl></section>
 
 <section class="sec fade"><header class="sh"><span class="s">With heart</span><h2>마음 전하실 곳</h2></header>
 <p class="de">전해주시는 축하의 마음은 소중하게 간직하여<br>좋은 부부의 모습으로 보답하겠습니다.</p><div id="acc"></div></section>
@@ -263,8 +286,8 @@ const C={
  date:'2027-01-30T12:30:00+09:00',
  addr:'부산 해운대구 센텀 중앙로 79',
  venue:'센텀사이언스파크웨딩홀', hall:'23층 더스카이홀',   // 예식장 이름(지도 검색에 사용)과 홀 이름
- naverMapKey:'lcctne8hyo',                    // 네이버 지도 Client ID (NCP Maps). 넣으면 네이버 지도가, 비우면 카카오맵이 표시됩니다
- lat:'', lng:'',                     // (선택) 예식장 좌표. 넣으면 주소 검색 없이 정확한 위치에 핀이 꽂혀요
+ naverMapKey:'lcctne8hyo',                    // 네이버 지도 Client ID (NCP Maps)
+ lat:35.1740945, lng:129.1261373,                     // (선택) 예식장 좌표. 넣으면 주소 검색 없이 정확한 위치에 핀이 꽂혀요
  supabaseUrl:'https://yeuodebemdwstgdyvxxb.supabase.co', supabaseKey:'sb_publishable_3mj4PmTPeDFt0E9LqfH3Ow_HdFAS0gi',   // Supabase 프로젝트 URL / 공개 키
  kakaoKey:'5cdb71463c67856234f8cb957664b579',                      // Kakao JavaScript 키 (지도·공유용, 비우면 구글지도/링크공유로 대체)
  bgm:'music/bgm.mp3',               // 배경음악 파일 (비우면 버튼 숨김)
@@ -273,8 +296,8 @@ const C={
  galleryCount:7, galleryExt:'webp',   // 갤러리 사진 장수(최대 30)와 확장자. images/gallery1.webp ~ gallery30.webp 순서대로 넣으세요
  contacts:{'신랑측':[['신랑','김남영','010-0000-0000'],['신랑 아버지','김진태','010-0000-0000'],['신랑 어머니','오석순','010-0000-0000']],
            '신부측':[['신부','박소영','010-0000-0000'],['신부 아버지','박상기','010-0000-0000'],['신부 어머니','김정희','010-0000-0000']]},
- accounts:{'신랑측':[['신랑 김남영','국민은행','000000-00-000000'],['아버지 김진태','신한은행','000-000-000000']],
-           '신부측':[['신부 박소영','우리은행','0000-000-000000'],['아버지 박상기','농협','000-0000-0000-00']]}
+ accounts:{'신랑측':[['신랑 김남영','국민은행','000000-00-000000'],['아버지 김진태','신한은행','000-000-000000'],['어머니 오석순','은행명','000-000-000000']],
+           '신부측':[['신부 박소영','우리은행','0000-000-000000'],['아버지 박상기','농협','000-0000-0000-00'],['어머니 김정희','은행명','000-000-000000']]}
 };
 /* =========================== */
 C.gallery=Array.from({length:Math.max(1,Math.min(30,C.galleryCount))},(_,i)=>`images/gallery${i+1}.${C.galleryExt}`);
@@ -314,19 +337,19 @@ tick();setInterval(tick,1000);
 
 // map
 $('#addr').textContent=C.addr;
-{const name=C.venue||C.addr,q=encodeURIComponent(name),has=C.lat&&C.lng;
- $('#nv').href=has?`https://map.naver.com/p/directions/-/${C.lng},${C.lat},${encodeURIComponent(name)},,/-/transit`:'https://map.naver.com/p/search/'+q;
- $('#kk').href=has?`https://map.kakao.com/link/to/${encodeURIComponent(name)},${C.lat},${C.lng}`:'https://map.kakao.com/link/search/'+q;
- const pinNaver=(lat,lng)=>{const p=new naver.maps.LatLng(lat,lng),m=new naver.maps.Map('map',{center:p,zoom:16,zoomControl:false,scaleControl:false,mapDataControl:false});new naver.maps.Marker({map:m,position:p})};
- const kakaoMap=()=>C.kakaoKey?load(`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${C.kakaoKey}&libraries=services&autoload=false`).then(()=>kakao.maps.load(()=>{
-   const put=(y,x)=>{const p=new kakao.maps.LatLng(y,x),m=new kakao.maps.Map($('#map'),{center:p,level:3});new kakao.maps.Marker({map:m,position:p})};
-   if(has)return put(C.lat,C.lng);new kakao.maps.services.Geocoder().addressSearch(C.addr,(r,s)=>{if(s==='OK')put(r[0].y,r[0].x)})})).catch(()=>0)
-  :($('#map').innerHTML=`<iframe loading="lazy" src="https://maps.google.com/maps?q=${encodeURIComponent(C.addr)}&output=embed" title="지도"></iframe>`);
- window.navermap_authFailure=()=>{$('#map').innerHTML='';kakaoMap()};
- if(C.naverMapKey)load(`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${C.naverMapKey}&submodules=geocoder`).then(()=>{
-   if(has)return pinNaver(C.lat,C.lng);
-   naver.maps.Service.geocode({query:C.addr},(st,res)=>{const a=st===naver.maps.Service.Status.OK&&res.v2.addresses[0];a?pinNaver(+a.y,+a.x):kakaoMap()})}).catch(kakaoMap);
- else kakaoMap()}
+{const name=C.venue||C.addr;$('#nv').href='https://map.naver.com/p/search/'+encodeURIComponent(name);$('#kk').href=C.lat&&C.lng?`https://map.kakao.com/link/map/${encodeURIComponent(name)},${C.lat},${C.lng}`:'https://map.kakao.com/link/search/'+encodeURIComponent(name);
+ const fail=()=>{$('#map').innerHTML=`<a class="mapfb" href="${$('#nv').href}" target="_blank" rel="noopener"><b>${esc(C.venue||'')}</b><span>${esc(C.hall||'')}</span><em>네이버 지도에서 위치 보기</em></a>`};
+ const draw=(lat,lng)=>{$('#map').innerHTML='';const p=new naver.maps.LatLng(lat,lng);
+  const m=new naver.maps.Map('map',{center:p,zoom:16,zoomControl:false,scaleControl:false,mapDataControl:false,logoControlOptions:{position:naver.maps.Position.BOTTOM_LEFT}});
+  new naver.maps.Marker({map:m,position:p,icon:{content:`<div class="mk" style="width:220px"><div class="mk-tag">${esc(C.venue||'')}</div><div class="mk-pin"><svg viewBox=\"0 0 30 40\"><defs><linearGradient id=\"pg\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#94393d\"/><stop offset=\"1\" stop-color=\"#6a2427\"/></linearGradient></defs><path d=\"M15 1C7.3 1 1 7.1 1 14.7 1 25 15 39 15 39s14-14 14-24.3C29 7.1 22.7 1 15 1z\" fill=\"url(#pg)\"/><path d=\"M15 20.5c-3.9-2.8-6-4.9-6-7.3 0-1.8 1.4-3.2 3.1-3.2 1.2 0 2.3.7 2.9 1.7.6-1 1.7-1.7 2.9-1.7 1.7 0 3.1 1.4 3.1 3.2 0 2.4-2.1 4.5-6 7.3z\" fill=\"#fbf7ef\"/></svg></div><div class="mk-sh"></div></div>`,anchor:new naver.maps.Point(110,74)}});
+  m.panBy(new naver.maps.Point(0,-18))};
+ window.navermap_authFailure=fail;
+ const waitFor=(f,ms=5000)=>new Promise((ok,no)=>{const t0=Date.now(),k=()=>f()?ok():Date.now()-t0>ms?no():setTimeout(k,100);k()});
+ const has=C.lat&&C.lng;
+ if(!C.naverMapKey)fail();
+ else load(`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${C.naverMapKey}${has?'':'&submodules=geocoder'}`).then(()=>waitFor(()=>window.naver&&naver.maps&&naver.maps.Map)).then(()=>{
+   if(has)return draw(+C.lat,+C.lng);
+   return waitFor(()=>naver.maps.Service).then(()=>naver.maps.Service.geocode({query:C.addr},(st,res)=>{const a=st===naver.maps.Service.Status.OK&&res.v2.addresses[0];a?draw(+a.y,+a.x):fail()}))}).catch(fail)}
 
 // backend (Supabase or localStorage fallback)
 const sb=(C.supabaseUrl&&window.supabase)?supabase.createClient(C.supabaseUrl,C.supabaseKey):null;
