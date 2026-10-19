@@ -110,12 +110,12 @@ body.opened .cv .k{transition-delay:.45s}body.opened .cv h1{transition-delay:.65
 .mt{margin-top:22px}
 /* gallery band */
 .band{padding:84px 0 70px;text-align:center}.band .sh h2{color:#e6d8c3}
-.gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 14% 30px;scrollbar-width:none;cursor:grab}.gal::-webkit-scrollbar{display:none}
-.g{flex:0 0 72%;aspect-ratio:5/7;scroll-snap-align:center;padding:7px;background:var(--ivory);box-shadow:0 16px 30px #0009}.g img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none}
+.gal{display:flex;align-items:center;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 14% 30px;scrollbar-width:none;cursor:grab}.gal::-webkit-scrollbar{display:none}
+.g{flex:0 0 auto;width:min(calc(min(100vw,480px)*1.008*var(--arn,.714)),min(84vw,404px));aspect-ratio:var(--ar,5/7);scroll-snap-align:center;padding:7px;background:var(--ivory);box-shadow:0 16px 30px #0009}.g img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none}
 .gc{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:6px}.gc button{border:1px solid #b8946699;background:none;width:36px;height:36px;border-radius:50%;color:#e6d8c3;font-size:18px;line-height:1;cursor:pointer}.gc span{font:400 19px var(--pen);letter-spacing:.08em;color:#e6d8c3}
 .band .hint{color:#a8977f;margin-top:14px}
 .btn.lite{margin-top:22px;padding:10px 22px;font-size:13px;border-color:#efe4d266;color:#efe4d2}.btn.lite:hover,.btn.lite:active{background:var(--wax);border-color:var(--wax);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid button{border:0;padding:0;background:none;cursor:pointer;aspect-ratio:1}.grid button{aspect-ratio:3/4}.grid img{width:100%;height:100%;object-fit:cover;display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid button{border:0;padding:0;background:none;cursor:pointer;aspect-ratio:1}.grid button{aspect-ratio:3/4;overflow:hidden}.grid img{width:100%;height:100%;object-fit:cover;display:block}
 /* calendar */
 .dt0{font:400 16px var(--ser);margin:-14px 0 26px}
 .cal{background:var(--ivory);padding:26px 18px 20px;box-shadow:0 10px 24px #3a2b241c,0 0 0 1px #eadfca}
@@ -196,7 +196,7 @@ label.f{display:block;font:400 14px var(--ser);margin:16px 0 6px}
 .chips{display:flex;gap:8px}.chips label{flex:1}.chips input{display:none}
 .chips span{display:block;text-align:center;padding:11px 0;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:14px;cursor:pointer;transition:.2s}.chips input:checked+span{background:var(--cocoa);border-color:var(--cocoa);color:#fff}
 .chk{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--mute);margin-top:14px;justify-content:center}.chk input{accent-color:var(--cocoa)}
-.lb{align-items:center;background:#140e0bf0}.lb img{max-width:92%;max-height:84vh;object-fit:contain}.lb .x{color:#fff}
+.lb{align-items:center;background:#140e0bf0;touch-action:none;overscroll-behavior:contain}.lb img{max-width:92%;max-height:84vh;object-fit:contain;-webkit-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;pointer-events:none}.lb .x{color:#fff}
 .ga{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid #fff8;background:#0006;color:#fff;font-size:22px;line-height:1;cursor:pointer}.ga.l{left:8px}.ga.r{right:8px}
 @media(hover:none){.ga{display:none}}
 #toast{position:fixed;left:50%;bottom:40px;transform:translateX(-50%);background:#2b201bee;color:#f3ebdd;padding:11px 20px;border-radius:999px;font-size:14px;z-index:99;opacity:0;pointer-events:none;transition:.3s}#toast.on{opacity:1}
@@ -275,7 +275,7 @@ label.f{display:block;font:400 14px var(--ser);margin:16px 0 6px}
 <label class="chk"><input type="checkbox" id="hide"> 오늘 하루 보지 않기</label></form></div></div>
 <div class="ov" id="m-gb"><div class="sheet"><button class="x" onclick="close_()">×</button><h3>축하 편지 쓰기</h3><form class="gf" id="gf"><input type="text" id="ga" placeholder="보내는 사람" maxlength="20"><textarea id="gc" rows="6" placeholder="신랑 신부에게 축하의 마음을 남겨주세요" maxlength="300"></textarea><button class="btn">편지 보내기</button></form></div></div>
 <div class="ov" id="m-grid"><div class="sheet"><button class="x" onclick="close_()">×</button><h3>사진 모아보기</h3><div class="grid" id="grid"></div></div></div>
-<div class="ov lb" id="lb"><button class="x" onclick="close_()" aria-label="닫기">×</button><img alt=""><button class="ga l" aria-label="이전">‹</button><button class="ga r" aria-label="다음">›</button></div>
+<div class="ov lb" id="lb"><button class="x" onclick="close_()" aria-label="닫기">×</button><img alt="" draggable="false"><button class="ga l" aria-label="이전">‹</button><button class="ga r" aria-label="다음">›</button></div>
 <div id="toast"></div>
 <button id="mb" aria-label="배경음악 켜기/끄기" hidden>♪</button><audio id="bgm" loop preload="auto"></audio>
 
@@ -293,7 +293,7 @@ const C={
  bgm:'music/bgm.mp3',               // 배경음악 파일 (비우면 버튼 숨김)
  interview:{q:['서로의 첫인상은 어땠나요?','결혼을 결심한 순간은 언제였나요?','서로에게 하고 싶은 말은?','하객분들께 한마디'],
   '신랑':{name:'김남영',intro:'',a:['','','','']},'신부':{name:'박소영',intro:'',a:['','','','']}},   // 인터뷰 질문·답변·한 줄 소개 (비워두면 안내 문구가 보입니다)
- galleryCount:7, galleryExt:'webp',   // 갤러리 사진 장수(최대 30)와 확장자. images/gallery1.webp ~ gallery30.webp 순서대로 넣으세요
+ galleryCount:24, galleryExt:'webp',   // 갤러리 사진 장수(최대 30)와 확장자. images/gallery1.webp ~ gallery30.webp 순서대로 넣으세요
  contacts:{'신랑측':[['신랑','김남영','010-0000-0000'],['신랑 아버지','김진태','010-0000-0000'],['신랑 어머니','오석순','010-0000-0000']],
            '신부측':[['신부','박소영','010-0000-0000'],['신부 아버지','박상기','010-0000-0000'],['신부 어머니','김정희','010-0000-0000']]},
  accounts:{'신랑측':[['신랑 김남영','국민은행','000000-00-000000'],['아버지 김진태','신한은행','000-000-000000'],['어머니 오석순','은행명','000-000-000000']],
@@ -395,21 +395,25 @@ F.addEventListener('submit',async e=>{e.preventDefault();const d=Object.fromEntr
 
 // gallery
 {const g=$('#gal'),all=C.gallery,lb=$('#lb'),li=$('#lb img'),cn=$('#gn');let cur=0,d=0,x0=0,s0=0,mv=0;
- g.innerHTML=all.map((s,i)=>`<div class="g" data-i="${i}">${img(s)}</div>`).join('');
- const step=()=>g.children[0].offsetWidth+12,pad=n=>String(n).padStart(2,'0');
- const upd=()=>{const i=Math.round(g.scrollLeft/step());cn.textContent=pad(Math.min(all.length,i+1))+' / '+pad(all.length);[...g.children].forEach((c,k)=>c.classList.toggle('off',k!==i))};
+ g.innerHTML=all.map((s,i)=>`<div class="g" data-i="${i}"><img src="${s}" alt="" loading="${i<3?'eager':'lazy'}" onload="const q=this.parentNode.style;q.setProperty('--ar',this.naturalWidth+'/'+this.naturalHeight);q.setProperty('--arn',this.naturalWidth/this.naturalHeight)"></div>`).join('');
+ const pad=n=>String(n).padStart(2,'0'),near=()=>{const c=g.scrollLeft+g.clientWidth/2;let b=0,bd=1e9;[...g.children].forEach((el,k)=>{const dd=Math.abs(el.offsetLeft+el.offsetWidth/2-c);if(dd<bd){bd=dd;b=k}});return b};
+ const go=k=>{const el=g.children[Math.max(0,Math.min(all.length-1,k))];g.scrollTo({left:el.offsetLeft-(g.clientWidth-el.offsetWidth)/2,behavior:'smooth'})};
+ const upd=()=>{const i=near();cn.textContent=pad(Math.min(all.length,i+1))+' / '+pad(all.length);[...g.children].forEach((c,k)=>c.classList.toggle('off',k!==i))};
  g.addEventListener('scroll',upd,{passive:true});upd();
- $('#gl').onclick=()=>g.scrollBy({left:-step(),behavior:'smooth'});$('#gr').onclick=()=>g.scrollBy({left:step(),behavior:'smooth'});
+ $('#gl').onclick=()=>go(near()-1);$('#gr').onclick=()=>go(near()+1);
  g.addEventListener('dragstart',e=>e.preventDefault());
  g.addEventListener('pointerdown',e=>{mv=0;if(e.pointerType!=='mouse')return;d=1;x0=e.clientX;s0=g.scrollLeft;g.style.scrollSnapType='none';g.style.cursor='grabbing'});
  addEventListener('pointermove',e=>{if(d){mv=e.clientX-x0;g.scrollLeft=s0-mv}});
- addEventListener('pointerup',()=>{if(d){d=0;g.style.scrollSnapType='';g.style.cursor=''}});
+ addEventListener('pointerup',()=>{if(d){d=0;g.style.cursor='';go(near());setTimeout(()=>g.style.scrollSnapType='',400)}});
  const show=i=>{cur=(i+all.length)%all.length;li.src=all[cur]};
  g.addEventListener('click',e=>{const t=e.target.closest('.g');if(t&&Math.abs(mv)<6){show(+t.dataset.i);open_('lb')}});
  $('#grid').innerHTML=all.map((s,i)=>`<button data-i="${i}" aria-label="사진 ${i+1}"><img src="${s}" alt="" loading="lazy"></button>`).join('');
  $('#gall').onclick=()=>open_('m-grid');
  $('#grid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;close_();show(+b.dataset.i);open_('lb')});
  $('#lb .l').onclick=()=>show(cur-1);$('#lb .r').onclick=()=>show(cur+1);
+ ['gesturestart','gesturechange','dragstart','contextmenu'].forEach(t=>lb.addEventListener(t,e=>e.preventDefault()));
+ lb.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault()},{passive:false});
+ lb.addEventListener('wheel',e=>{if(e.ctrlKey)e.preventDefault()},{passive:false});
  let tx=0;lb.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
  lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)show(cur+(dx<0?1:-1))})}
 
