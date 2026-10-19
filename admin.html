@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>청첩장 관리</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Hamlet';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Hamlet';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Hamlet';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/Hahmlet-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+:root{--cocoa:#3a2b24;--ivory:#fbf7ef;--paper:#f3ebdd;--gold:#b89466;--wax:#7b2d2f;--ink:#2f2722;--mute:#6f645a;--line:#e2d6c2;--ser:'Hamlet','Noto Serif KR','AppleMyungjo',serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:400 15px/1.6 var(--ser);color:var(--ink);background:var(--paper);min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:22px}
+header h1{font:400 34px/1 'Pinyon Script',serif;color:var(--cocoa)}header p{font-size:13px;color:var(--mute)}
+.btn{border:1px solid var(--cocoa);background:var(--cocoa);color:#f3ebdd;border-radius:999px;padding:9px 18px;font:400 14px var(--ser);cursor:pointer}
+.btn.o{background:none;color:var(--cocoa)}.btn.sm{padding:5px 12px;font-size:12.5px}.btn.del{border-color:#b9a9a0;background:none;color:var(--wax)}
+.btn:disabled{opacity:.5}
+.card{background:var(--ivory);border-radius:14px;box-shadow:0 0 0 1px #3a2b2414,0 10px 26px -14px #3a2b2440;padding:20px}
+#login{max-width:360px;margin:12vh auto 0;text-align:center}
+#login h1{font:400 44px/1 'Pinyon Script',serif;color:var(--cocoa);margin-bottom:6px}
+#login p{color:var(--mute);font-size:14px;margin-bottom:20px}
+input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff;margin-bottom:10px;outline:0}input:focus{border-color:var(--gold)}
+.err{color:var(--wax);font-size:13px;min-height:20px}
+.tabs{display:flex;gap:6px;margin-bottom:16px}.tabs button{flex:1;border:0;background:#e9dfcf;color:var(--mute);padding:11px;border-radius:10px;font:400 15px var(--ser);cursor:pointer}.tabs button.on{background:var(--cocoa);color:#f3ebdd}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.stat{background:var(--ivory);border-radius:12px;padding:14px;box-shadow:0 0 0 1px #3a2b2414;text-align:center}
+.stat b{display:block;font:600 26px var(--ser);color:var(--cocoa)}.stat span{font-size:12.5px;color:var(--mute)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.split .card{padding:14px 16px;font-size:14px}.split h3{font:600 14px var(--ser);color:var(--wax);margin-bottom:6px}
+.split dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px}.split dt{color:var(--mute)}.split dd{text-align:right}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}.bar .sp{flex:1}
+select{padding:8px 10px;border:1px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+.list{display:grid;gap:8px}
+.row{background:var(--ivory);border-radius:12px;padding:12px 14px;box-shadow:0 0 0 1px #3a2b2414;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:start}
+.row .nm{font-weight:600}.row .meta{font-size:13px;color:var(--mute)}.row .tx{grid-column:1/-1;white-space:pre-wrap;word-break:break-word;font-size:14.5px}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;margin-right:4px;background:#efe5d6;color:var(--cocoa)}.tag.no{background:#f1dddd;color:var(--wax)}.tag.g{background:#e6ece3;color:#3f5a3a}
+.empty{text-align:center;color:var(--mute);padding:40px 0}
+#toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#2b201bee;color:#f3ebdd;padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:.3s;pointer-events:none}#toast.on{opacity:1}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.split{grid-template-columns:1fr}header h1{font-size:28px}}
+</style></head>
+<body>
+<div class="wrap">
+ <section id="login" class="card" hidden>
+  <h1>For us</h1><p>청첩장 관리 페이지예요. 관리자 계정으로 로그인해 주세요.</p>
+  <form id="lf"><input type="email" id="em" placeholder="이메일" autocomplete="username" required><input type="password" id="pw" placeholder="비밀번호" autocomplete="current-password" required>
+  <p class="err" id="lerr"></p><button class="btn" style="width:100%">로그인</button></form>
+ </section>
+
+ <section id="app" hidden>
+  <header><div><h1>Namyoung &amp; Soyoung</h1><p id="who"></p></div><button class="btn o sm" id="out">로그아웃</button></header>
+  <div class="tabs"><button class="on" data-t="r">참석 응답</button><button data-t="g">방명록</button></div>
+
+  <div id="tr">
+   <div class="stats" id="stats"></div>
+   <div class="split" id="split"></div>
+   <div class="bar"><select id="fs"><option value="">전체</option><option>신랑측</option><option>신부측</option></select><select id="fa"><option value="">참석·불참 전체</option><option>참석</option><option>불참석</option></select><span class="sp"></span><button class="btn o sm" id="rl1">새로고침</button><button class="btn sm" id="csv">엑셀(CSV) 받기</button></div>
+   <div class="list" id="rlist"></div>
+  </div>
+
+  <div id="tg" hidden>
+   <div class="bar"><span id="gcount" class="meta"></span><span class="sp"></span><button class="btn o sm" id="rl2">새로고침</button></div>
+   <div class="list" id="glist"></div>
+  </div>
+ </section>
+</div>
+<div id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js"></script>
+<script>
+const SUPABASE_URL='https://yeuodebemdwstgdyvxxb.supabase.co', SUPABASE_KEY='sb_publishable_3mj4PmTPeDFt0E9LqfH3Ow_HdFAS0gi';
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)};
+const fmt=d=>{const x=new Date(d);return `${x.getMonth()+1}/${x.getDate()} ${String(x.getHours()).padStart(2,'0')}:${String(x.getMinutes()).padStart(2,'0')}`};
+const parse=m=>{const s=(m||'').match(/^\[(.*?)\]/);const c=(m||'').match(/동행:\s*(.*)$/);return {side:s?s[1]:'-',mates:c&&c[1]!=='-'?c[1]:''}};
+let R=[],G=[];
+
+async function boot(){const {data:{session}}=await sb.auth.getSession();
+ if(!session){$('#login').hidden=false;$('#app').hidden=true;return}
+ $('#login').hidden=true;$('#app').hidden=false;$('#who').textContent=session.user.email+' 로 로그인됨';loadR();loadG()}
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';
+ const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
+ if(error){$('#lerr').textContent='이메일 또는 비밀번호가 맞지 않아요.';return}boot()};
+$('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));$('#tr').hidden=b.dataset.t!=='r';$('#tg').hidden=b.dataset.t!=='g'});
+
+async function loadR(){const {data,error}=await sb.from('rsvp_submissions').select('*').order('created_at',{ascending:false});
+ if(error){$('#rlist').innerHTML=`<p class="empty">불러오지 못했어요: ${esc(error.message)}</p>`;return}
+ R=data.map(r=>({...r,...parse(r.message)}));renderR()}
+function renderR(){
+ const yes=R.filter(r=>r.attendance==='참석'),sum=a=>a.reduce((t,r)=>t+(+r.guest_count||0),0);
+ $('#stats').innerHTML=[[R.length,'총 응답'],[yes.length,'참석 응답'],[sum(yes),'참석 인원'],[yes.filter(r=>r.meal_preference==='예정').reduce((t,r)=>t+(+r.guest_count||0),0),'식사 예정 인원']].map(([v,l])=>`<div class="stat"><b>${v}</b><span>${l}</span></div>`).join('');
+ $('#split').innerHTML=['신랑측','신부측'].map(sd=>{const a=R.filter(r=>r.side===sd),y=a.filter(r=>r.attendance==='참석');
+  return `<div class="card"><h3>${sd}</h3><dl><dt>참석 응답</dt><dd>${y.length}건 · ${sum(y)}명</dd><dt>불참석</dt><dd>${a.length-y.length}건</dd><dt>식사 예정</dt><dd>${sum(y.filter(r=>r.meal_preference==='예정'))}명</dd><dt>식사 미정</dt><dd>${sum(y.filter(r=>r.meal_preference==='미정'))}명</dd></dl></div>`}).join('');
+ const fs=$('#fs').value,fa=$('#fa').value,L=R.filter(r=>(!fs||r.side===fs)&&(!fa||r.attendance===fa));
+ $('#rlist').innerHTML=L.length?L.map(r=>`<div class="row"><div><span class="nm">${esc(r.name)}</span> <span class="meta">${esc(r.side)} · ${fmt(r.created_at)}</span></div><button class="btn del sm" data-d="${r.id}">삭제</button>
+  <div class="tx"><span class="tag ${r.attendance==='참석'?'g':'no'}">${esc(r.attendance)}</span>${r.attendance==='참석'?`<span class="tag">${+r.guest_count||0}명</span><span class="tag">식사 ${esc(r.meal_preference||'-')}</span>`:''}${r.mates?`\n동행: ${esc(r.mates)}`:''}</div></div>`).join(''):'<p class="empty">아직 응답이 없어요.</p>'}
+$('#fs').onchange=$('#fa').onchange=renderR;$('#rl1').onclick=()=>{loadR();toast('새로고침했어요')};
+$('#rlist').onclick=async e=>{const id=e.target.dataset.d;if(!id||!confirm('이 응답을 삭제할까요?'))return;
+ const {error,count}=await sb.from('rsvp_submissions').delete({count:'exact'}).eq('id',id);if(error||!count)return toast('삭제하지 못했어요');R=R.filter(r=>r.id!==id);renderR();toast('삭제했어요')};
+$('#csv').onclick=()=>{const h=['응답시각','구분','성함','참석여부','인원','식사','동행인'];
+ const rows=R.map(r=>[new Date(r.created_at).toLocaleString('ko-KR'),r.side,r.name,r.attendance,r.guest_count,r.meal_preference||'',r.mates]);
+ const csv='﻿'+[h,...rows].map(a=>a.map(v=>`"${String(v??'').replace(/"/g,'""')}"`).join(',')).join('\r\n');
+ const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download='참석응답.csv';a.click()};
+
+async function loadG(){const {data,error}=await sb.from('guestbook_messages').select('*').order('created_at',{ascending:false});
+ if(error){$('#glist').innerHTML=`<p class="empty">불러오지 못했어요: ${esc(error.message)}</p>`;return}G=data;renderG()}
+function renderG(){$('#gcount').textContent=`편지 ${G.length}통`;
+ $('#glist').innerHTML=G.length?G.map(m=>`<div class="row"><div><span class="nm">From. ${esc(m.author)}</span> <span class="meta">${fmt(m.created_at)}</span></div><button class="btn del sm" data-d="${m.id}">삭제</button><div class="tx">${esc(m.content)}</div></div>`).join(''):'<p class="empty">아직 편지가 없어요.</p>'}
+$('#rl2').onclick=()=>{loadG();toast('새로고침했어요')};
+$('#glist').onclick=async e=>{const id=e.target.dataset.d;if(!id||!confirm('이 편지를 삭제할까요? 청첩장에서도 사라져요.'))return;
+ const {error,count}=await sb.from('guestbook_messages').delete({count:'exact'}).eq('id',id);if(error||!count)return toast('삭제하지 못했어요');G=G.filter(m=>m.id!==id);renderG();toast('삭제했어요')};
+boot();
+</script></body></html>
