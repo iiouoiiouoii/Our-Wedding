@@ -42,10 +42,10 @@ select{padding:8px 10px;border:1px solid var(--line);border-radius:10px;font:inh
 </style></head>
 <body>
 <div class="wrap">
- <section id="login" class="card" hidden>
+ <section id="login" class="card">
   <h1>For us</h1><p>청첩장 관리 페이지예요. 관리자 계정으로 로그인해 주세요.</p>
   <form id="lf"><input type="email" id="em" placeholder="이메일" autocomplete="username" required><input type="password" id="pw" placeholder="비밀번호" autocomplete="current-password" required>
-  <p class="err" id="lerr"></p><button class="btn" style="width:100%">로그인</button></form>
+  <p class="err" id="lerr"></p><p class="err" id="nerr" hidden></p><button class="btn" style="width:100%">로그인</button></form>
  </section>
 
  <section id="app" hidden>
@@ -67,20 +67,24 @@ select{padding:8px 10px;border:1px solid var(--line);border-radius:10px;font:inh
 </div>
 <div id="toast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js"></script>
+<script>
+function loadSB(){const srcs=['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.js','https://unpkg.com/@supabase/supabase-js@2.49.4/dist/umd/supabase.js'];
+ return new Promise((ok,no)=>{let i=0;const next=()=>{if(i>=srcs.length)return no();const s=document.createElement('script');s.src=srcs[i++];s.onload=()=>window.supabase?ok():next();s.onerror=next;document.head.append(s)};next()})}
+</script>
 <script>
 const SUPABASE_URL='https://yeuodebemdwstgdyvxxb.supabase.co', SUPABASE_KEY='sb_publishable_3mj4PmTPeDFt0E9LqfH3Ow_HdFAS0gi';
-const sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let sb=null;
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),1800)};
 const fmt=d=>{const x=new Date(d);return `${x.getMonth()+1}/${x.getDate()} ${String(x.getHours()).padStart(2,'0')}:${String(x.getMinutes()).padStart(2,'0')}`};
 const parse=m=>{const s=(m||'').match(/^\[(.*?)\]/);const c=(m||'').match(/동행:\s*(.*)$/);return {side:s?s[1]:'-',mates:c&&c[1]!=='-'?c[1]:''}};
 let R=[],G=[];
 
-async function boot(){const {data:{session}}=await sb.auth.getSession();
+async function boot(){if(!sb){try{await loadSB();sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY)}catch(e){const n=$('#nerr');n.hidden=false;n.textContent='관리 기능을 불러오지 못했어요. 지금 연결된 와이파이(학교·회사)에서 막혔을 수 있어요. 휴대폰 데이터로 바꿔서 다시 열어 주세요.';$('#lf button').disabled=true;return}}
+ const {data:{session}}=await sb.auth.getSession();
  if(!session){$('#login').hidden=false;$('#app').hidden=true;return}
  $('#login').hidden=true;$('#app').hidden=false;$('#who').textContent=session.user.email+' 로 로그인됨';loadR();loadG()}
-$('#lf').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';if(!sb)return;
  const {error}=await sb.auth.signInWithPassword({email:$('#em').value.trim(),password:$('#pw').value});
  if(error){$('#lerr').textContent='이메일 또는 비밀번호가 맞지 않아요.';return}boot()};
 $('#out').onclick=async()=>{await sb.auth.signOut();location.reload()};
