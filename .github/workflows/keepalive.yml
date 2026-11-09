@@ -1,0 +1,12 @@
+name: Keep Supabase awake
+on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  workflow_dispatch:
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: >
+          curl -fsS "https://yeuodebemdwstgdyvxxb.supabase.co/rest/v1/guestbook_messages?select=id&limit=1"
+          -H "apikey: sb_publishable_3mj4PmTPeDFt0E9LqfH3Ow_HdFAS0gi"
